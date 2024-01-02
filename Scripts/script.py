@@ -6,15 +6,10 @@ import logging
 import os
 
 def create_dir():
-    # Especifique o caminho da pasta que você deseja criar
-    urlData = 'SolrData/'
-    urlLogs = 'Logs/'
+    url_logs = 'Logs/'
 
-    if not os.path.exists(urlData):
-        os.mkdir(urlData)
-
-    if not os.path.exists(urlLogs):
-        os.mkdir(urlLogs)
+    if not os.path.exists(url_logs):
+        os.mkdir(url_logs)
 
 def configure_logging():
   data_e_hora_atual = datetime.now()
