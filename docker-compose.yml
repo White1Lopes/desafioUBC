@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  solr:
+    image: solr
+    container_name: solr_instance
+    ports:
+      - "8983:8983"
+    volumes:
+      - ./SolrData:/var/solr
+    command:
+      - solr-precreate
+      - students
+
+  python_app:
+    container_name: script_python
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      - file_Path=Dataset/aluno.csv
+      - docker_running=True
+      - base_url=http://solr:8983
+    depends_on:
+      - solr
